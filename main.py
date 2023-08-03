@@ -26,6 +26,11 @@ class MyServer(BaseHTTPRequestHandler):
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
     <style>
+
+        .faq {
+          width: 100vh;
+        }
+
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -296,16 +301,46 @@ class MyServer(BaseHTTPRequestHandler):
                                 Email support,
                                 Help center access
                             </p>
-                            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Купить</button>
+                            <button type="button" class="w-100 btn btn-lg btn-success">Купить</button>
                         </div>
-                    </div>
-                </div>
+                        <form>
+                       <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Имя</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                     </div>
+                     <div class="mb-3">
+                     <label for="exampleInputPassword1" class="form-label">E-mail</label>
+                     <input type="password" class="form-control" id="exampleInputPassword1">
+                     </div>
+                     </form>
+                  </div>
             </div>
         </main>
+        </main>
+        <div>
+        <p class="d-inline-flex gap-1">
+          <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Как купить?</a>
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Как доставить?</button>
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Какая гарантия?</button>
+        </p>
+        <div class="row">
+          <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+              <div class="card card-body">
+                Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample2">
+              <div class="card card-body">
+                Some placeholder content for the second collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
 
-    </div>
-
-</main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
@@ -320,6 +355,7 @@ class MyServer(BaseHTTPRequestHandler):
         })
     })()
 </script>
+
 </body>
 </html>"""
 
@@ -328,7 +364,7 @@ class MyServer(BaseHTTPRequestHandler):
         """ Метод для обработки входящих GET-запросов """
         self.page_content = self.get_html_content()
         self.send_response(200) # Отправка кода ответа
-        self.send_header("Content-type", self.send_header("Content-type", "text/html")) # Отправка типа данных, который будет передаваться
+        self.send_header("Content-type", "text/html") # Отправка типа данных, который будет передаваться
         self.end_headers() # Завершение формирования заголовков ответа
         self.wfile.write(bytes(self.page_content, "utf-8")) # Тело ответа
 
